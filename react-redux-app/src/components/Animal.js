@@ -1,48 +1,40 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { getAnimal, saveImage } from "../actions";
 
-const Animal = ({
-  animal,
-  imageURL,
-  error,
-  isFetching,
-  getAnimal,
-  saveImage
-}) => {
+const Animal = () => {
+  const state = useSelector(state => {
+    return {
+      animal: state.animal,
+      imageURL: state.imageURL,
+      error: state.error,
+      isFetching: state.isFetching
+    };
+  })
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    getAnimal(animal);
-  }, [animal, getAnimal]);
+    dispatch(getAnimal(state.animal));
+  }, [state.animal, getAnimal]);
 
   const addToSaved = currentImage => {
-    saveImage(currentImage);
+    dispatch(saveImage(currentImage));
   };
 
-  if (isFetching) return <h2>loading...</h2>;
+  if (state.isFetching) return <h2>loading...</h2>;
 
-  if (error) return <img src={`https://http.cat/${error}`} alt={error} />;
+  if (state.error) return <img src={`https://http.cat/${state.error}`} alt={state.error} />;
 
   return (
     <div>
-      <button className="save-btn" onClick={() => addToSaved(imageURL)}>
+      <button className="save-btn" onClick={() => addToSaved(state.imageURL)}>
         add to saved
       </button>
-      <img src={imageURL} alt={animal} />
+      <img src={state.imageURL} alt={state.animal} />
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    animal: state.animal,
-    imageURL: state.imageURL,
-    error: state.error,
-    isFetching: state.isFetching
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { getAnimal, saveImage }
-)(Animal);
+export default Animal;

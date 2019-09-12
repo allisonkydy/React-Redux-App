@@ -1,12 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Animal from './Animal';
 import { getAnimal, setAnimal } from '../actions';
 
-const AnimalView = ({ animal, getAnimal, setAnimal }) => {
+const AnimalView = () => {
+  const animal = useSelector(state => state.animal);
+  const dispatch = useDispatch();
+
   const changeAnimal = (newAnimal) => {
-    animal === newAnimal ? getAnimal(animal) : setAnimal(newAnimal);
+    animal === newAnimal ? dispatch(getAnimal(animal)) : dispatch(setAnimal(newAnimal));
   }
 
   return (
@@ -21,13 +24,5 @@ const AnimalView = ({ animal, getAnimal, setAnimal }) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    animal: state.animal,
-  };
-};
 
-export default connect(
-  mapStateToProps,
-  { getAnimal, setAnimal }
-)(AnimalView);
+export default AnimalView;
