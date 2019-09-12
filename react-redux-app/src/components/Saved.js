@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux';
 
 const Saved = () => {
   const saved = useSelector(state => state.saved);
+
+  if (saved.length === 0) return <h2>no images saved :(</h2>
+
   return (
     <div>
       {saved.map(image => {

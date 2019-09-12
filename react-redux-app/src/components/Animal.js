@@ -18,8 +18,8 @@ const Animal = ({ animal, imageURL, error, isFetching, getAnimal, saveImage }) =
 
   return (
     <div>
+      <button className="save-btn" onClick={() => addToSaved(imageURL)}>add to saved</button>
       <img src={imageURL} alt={animal} />
-      <button onClick={() => addToSaved(imageURL)}>add to saved</button>
     </div>
   );
 };
