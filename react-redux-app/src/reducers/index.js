@@ -1,4 +1,4 @@
-import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR } from "../actions";
+import { FETCH_START, FETCH_SUCCESS, FETCH_ERROR, SET_ANIMAL } from "../actions";
 
 const initialState = {
   animal: "shibes",
@@ -27,6 +27,11 @@ export const reducer = (state = initialState, action) => {
         isFetching: false,
         error: action.payload
       };
+    case SET_ANIMAL:
+      return {
+        ...state,
+        animal: action.payload
+      }
     default:
       return state;
   }

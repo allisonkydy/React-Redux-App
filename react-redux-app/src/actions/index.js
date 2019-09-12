@@ -20,3 +20,9 @@ export const getAnimal = animal => {
       });
   };
 };
+
+export const SET_ANIMAL = "SET_ANIMAL";
+
+export const setAnimal = animal => {
+  return { type: SET_ANIMAL, payload: animal };
+}
