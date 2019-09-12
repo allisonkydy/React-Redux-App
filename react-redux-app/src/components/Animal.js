@@ -3,14 +3,21 @@ import { connect } from "react-redux";
 
 import { getAnimal, saveImage } from "../actions";
 
-const Animal = ({ animal, imageURL, error, isFetching, getAnimal, saveImage }) => {
+const Animal = ({
+  animal,
+  imageURL,
+  error,
+  isFetching,
+  getAnimal,
+  saveImage
+}) => {
   useEffect(() => {
     getAnimal(animal);
   }, [animal, getAnimal]);
 
   const addToSaved = currentImage => {
     saveImage(currentImage);
-  }
+  };
 
   if (isFetching) return <h2>loading...</h2>;
 
@@ -18,7 +25,9 @@ const Animal = ({ animal, imageURL, error, isFetching, getAnimal, saveImage }) =
 
   return (
     <div>
-      <button className="save-btn" onClick={() => addToSaved(imageURL)}>add to saved</button>
+      <button className="save-btn" onClick={() => addToSaved(imageURL)}>
+        add to saved
+      </button>
       <img src={imageURL} alt={animal} />
     </div>
   );
