@@ -7,7 +7,7 @@ const Saved = () => {
   if (saved.length === 0) return <h2>no images saved :(</h2>
 
   return (
-    <div>
+    <div className="saved">
       {saved.map(image => {
         return <img src={image} alt='' />
       })}

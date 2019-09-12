@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding-bottom: 70px;
 }
 
 .navlinks {
@@ -60,4 +61,19 @@ button:active{
 
 .save-btn:hover {
   color: #e2536b;
+}
+
+.saved {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+.saved img {
+  width: 300px;
+  object-fit: cover;
+  margin-bottom: 15px;
 }
