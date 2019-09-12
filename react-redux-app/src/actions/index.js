@@ -26,3 +26,9 @@ export const SET_ANIMAL = "SET_ANIMAL";
 export const setAnimal = animal => {
   return { type: SET_ANIMAL, payload: animal };
 }
+
+export const SAVE_IMAGE = "SAVE_IMAGE";
+
+export const saveImage = image => {
+  return { type: SAVE_IMAGE, payload: image }
+}

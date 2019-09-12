@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-import { getAnimal } from "../actions";
+import { getAnimal, saveImage } from "../actions";
 
-const Animal = ({ animal, imageURL, error, isFetching, getAnimal }) => {
+const Animal = ({ animal, imageURL, error, isFetching, getAnimal, saveImage }) => {
   useEffect(() => {
     getAnimal(animal);
   }, [animal, getAnimal]);
+
+  const addToSaved = currentImage => {
+    saveImage(currentImage);
+  }
 
   if (isFetching) return <h2>loading...</h2>;
 
@@ -15,6 +19,7 @@ const Animal = ({ animal, imageURL, error, isFetching, getAnimal }) => {
   return (
     <div>
       <img src={imageURL} alt={animal} />
+      <button onClick={() => addToSaved(imageURL)}>add to saved</button>
     </div>
   );
 };
@@ -30,5 +35,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getAnimal }
+  { getAnimal, saveImage }
 )(Animal);
