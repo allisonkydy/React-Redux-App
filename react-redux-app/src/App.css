@@ -74,6 +74,6 @@ button:active{
 
 .saved img {
   width: 300px;
-  object-fit: cover;
+  object-fit: contain;
   margin-bottom: 15px;
 }
