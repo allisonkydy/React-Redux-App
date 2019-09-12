@@ -10,6 +10,7 @@ const Animal = ({ animal, imageURL, error, isFetching, getAnimal, setAnimal }) =
 
   const changeAnimal = (newAnimal) => {
     setAnimal(newAnimal);
+    if (animal === newAnimal) getAnimal(animal);
   }
 
   if (isFetching) return <h2>loading...</h2>;
@@ -18,12 +19,12 @@ const Animal = ({ animal, imageURL, error, isFetching, getAnimal, setAnimal }) =
 
   return (
     <div>
-      <img src={imageURL} alt={animal} />
       <div>
         <button onClick={() => changeAnimal("shibes")}>shibe plz</button>
         <button onClick={() => changeAnimal("birds")}>bird plz</button>
         <button onClick={() => changeAnimal("cats")}>cat plz</button>
       </div>
+      <img src={imageURL} alt={animal} />
     </div>
   );
 };
